@@ -1,0 +1,15 @@
+Proof by contradiction:
+Take $X_1, \dots, X_M$ to be the number of times being in state $1, \dots, M$. Also the take $N$ 
+to be the total number of steps. Also suppose that none of the states are recurrent. Note that 
+$\sum_iX_i = N$.
+$$
+\lim_{n\to\infty}\expected[X_1 + \dots + X_M | N = n] = \lim_{n\to\infty}\expected[N | N = n] = \infty
+$$
+$$
+\lim_{n\to\infty}\expected[X_1 + \dots + X_M | N = n] = \lim_{n\to\infty}\sum_{i = 1}^M\expected[X_i | N = n] 
+$$
+Also $\lim_{n\to\infty}\expected[X_i | N = n] < \infty $.
+$$
+\lim_{n\to\infty}\expected[X_1 + \dots + X_M | N = n] < \infty.
+$$
+Which is a contradiction. So there must exist at least one recurrent state.

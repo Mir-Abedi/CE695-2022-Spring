@@ -1,0 +1,37 @@
+We need to find the following two things. First an unbiassed estimator and second a complete statistic. 
+$$
+\mathcal{L}(\theta | x) = f(x|\theta) = \frac{1}{(2\theta)^n} \quad,\quad\text{ given that }\forall_i\quad X_i <= \theta \text{ And }X_i >= -\theta
+$$
+$$
+= \frac{1}{(2\theta)^n} \quad\forall_i\quad |X_i| <= \theta = \frac{1}{(2\theta)^n}\mathcal{I}(\text{Max}(|X_i|) <= \theta)
+$$
+By factorization $\text{Max}(|X_i|)$ is a sufficient statistic. Note that it's also a complete statistic.
+$$
+W = \text{Max}(|X_i|)
+$$
+$$
+F_W(w) = \prob[\forall_i-w\leq X_i\leq w] = (\frac{w}{\theta})^n
+$$
+$$
+f_W(w) = n\frac{w^{n - 1}}{\theta^n}
+$$
+Now suppose there exists some function $g$ such that $\expected[g(\text{Max}(|X_i|))] = 0$.
+$$
+\expected[g(W)] = \int_0^\theta g(w)\frac{nw^{n - 1}}{\theta^n}\,dw = 0
+$$
+$$
+\rightarrow g(\theta)\theta^{n - 1} = 0 \rightarrow \prob[g(\theta) = 0] = 1
+$$
+So by now we know that $\text{Max}(|X_i|)$ is a complete statistic. Now we need to find a unbiassed estimator. Let's first find the MLE estimator.
+$$
+\mathcal{L}(\theta | x) = f(x|\theta) = \frac{1}{(2\theta)^n} \quad,\quad\text{ given that }\forall_i\quad X_i <= \theta \text{ And }X_i >= -\theta
+$$
+Just like section 2-1, for any $\theta \leq \text{Max}(|X_i|)\;:\;\mathcal{L} = 0$ and for any $\theta > \text{Max}(|X_i|) \;:\;\mathcal{L}(\theta) < \mathcal{L}(\text{Max}(|X_i|))$. Therefore 
+the MLE estimation of is $\hat{\theta}_{\text{MLE}} = \text{Max}(|X_i|)$. We previously derived its density function.
+$$
+\expected[\hat{\theta}_{\text{MLE}}] = \int_0^\theta n\frac{x^n}{\theta^n}\,dx = \frac{n}{n + 1}\theta
+$$
+So $\hat{\theta} = \frac{n+1}{n}\text{Max}(|X_i|)$ is an unbiassed estimator. Now we can find the UMVUE by conditioning on complete statistic.
+$$
+\theta_{\text{UMVUE}} = \expected[\frac{n+1}{n}\text{Max}(|X_i|) | \text{Max}(|X_i|)] = \frac{n+1}{n}\text{Max}(|X_i|)
+$$

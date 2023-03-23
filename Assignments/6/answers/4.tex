@@ -1,0 +1,18 @@
+First part: if it's not bipartite then it's aperiodic.
+
+\noindent If the graph is not bopartite then there must exist at least one odd cycle $v_{a_1}, \dots, v_{a_n}$. Take the walk from 
+path from an arbitrary node $v_s$ to $v_{a_1}$. And then take the odd cycle and path from $v_{a_1}$ back to $v_s$. We know that 
+this walk has $k$ nodes and $k$ is odd. So $\prob[X_k = v_s | X_0 = v_s] > 0$.
+
+\noindent Also take the path from $v_s$ to $v_n$ and back for $v_n\in\text{neighbors}(v_s)$. So $\prob[X_2 = v_s| X_0 = v_s] > 0$. 
+
+\noindent Take the gcd of the first $k$ and 2. Then $\text{Period}(v_s) = 1$.
+
+\noindent Second part: if its aperiodic then it's not bipartite. Suppose it's bipartite.
+
+\noindent Then all cycles must have an even number of vertices. Then all paths that start from $v_s$ and end in $v_s$ must have an even number of nodes. 
+Then only for odd $k$'s $\prob[X_k = v_s|X_0 = v_s] > 0$.
+$$
+\text{Period}(v_s) > 1 
+$$
+By contradiction the given graph is not bipartite.

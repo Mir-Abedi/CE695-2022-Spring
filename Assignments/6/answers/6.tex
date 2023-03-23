@@ -1,0 +1,9 @@
+\subsection{a}
+Suppose that no set of nodes exist that starting from arbitrary $v_s$ we can get back to $v_s$. (no cycles exist on the MDP)
+
+\noindent Then $v_s$ can't be positive recurrent because there is no path back to $v_s$. 
+Also note that there can't be only one cycle with length $M$. Because this causes the Markov Decision to be not aperiodic. 
+So the graph contains a cycle with length equal to $\tau$ such that $\tua < M$.
+\subsection{b}
+Every state that can be reached with path which has length $m$ then it can also be reached with moving on the cycle and then taking the path. 
+Which means it is reachable with length $m + \tau$.

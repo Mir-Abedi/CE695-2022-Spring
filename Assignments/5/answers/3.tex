@@ -1,0 +1,124 @@
+\subsection{(a)}
+MLE for a: (just like 2-a)
+$$
+\hat{a}_{\text{MLE}} = \text{Max}(x)
+$$
+MLE for $\eta$:
+$$
+\mathcal{L}(\eta|x) = f(x|\eta) = \frac{1}{\eta^n}e^{\frac{-1}{\eta}\sum_{i = 1}^nx_i}
+$$
+$$
+\text{Log }\mathcal{L}(\eta|x) = -n\text{log}(\eta) - \frac{1}{\eta}\sum_{i = 1}^nx_i
+$$
+$$
+\frac{\partial \text{ Log }\mathcal{L}}{\partial \eta} = -\frac{n}{\eta} + \frac{1}{\eta^2}\sum_{i = 1}^nx_i = 0
+$$
+$$
+\hat{\eta}_{\text{MLE}} = \frac{1}{n}\sum_{i = 1}^nx_i = \bar{x}
+$$
+MLE for $\mu$ and $\sigma$:
+$$
+\mathcal{L}(\mu, \sigma^2|x) = f(x|\mu, \sigma^2) = (\frac{1}{\sqrt{2\pi}})^n\frac{1}{\sigma^n}e^{-\frac{1}{2\sigma^2}\sum_{i = 1}^n(x_i - \mu)^2}
+$$
+$$
+\text{Log }\mathcal{L}(\mu, \sigma^2|x) = \text{Const. } - n\text{Log}(\sigma) - \frac{1}{2\sigma^2}\sum_{i = 1}^n(x_i - \mu)^2
+$$
+$$
+\frac{\partial \text{Log }\mathcal{L}}{\partial\mu} = \frac{1}{\sigma^2}(\mu - x_i) = 0
+$$
+$$
+\rightarrow \hat{\mu}_{\text{MLE}} = \frac{1}{n}\sum_{i = 1}^n
+$$
+$$
+\frac{\partial \text{Log }\mathcal{L}}{\partial\sigma^2} = -\frac{n}{2\sigma^2} + \frac{1}{2(\sigma^2)^2}\sum_{i = 1}^n(x_i - \mu)^2 = 0
+$$
+$$
+\rightarrow\hat{\sigma^2}_{\text{MLE}} = \frac{1}{n}\sum_{i = 1}^n(x_i - \mu)^2
+$$
+Substitude $\mu$ with $\hat{\mu}$:
+$$
+\hat{\sigma^2}_{\text{MLE}} = \frac{1}{n}\sum_{i = 1}^n(x_i - \hat{\mu}_{\text{MLE}})^2
+$$
+\subsection{(b)}
+\subsubsection{($a$)}
+$$
+\expected[\hat{a}] = \expected[\text{Max}(x)] 
+$$
+First we need to find the CDF of $\text{Max}(x)$. Also note that for a positive valued random variable $X$ the expected value can be 
+written as:
+$$
+\expected[X] = \int_0^\infty S(x)\,dx\quad,\quad S(x) = 1 - F(x)
+$$
+$$
+F_{\hat{a}}(y) = \prob[\forall_ix_i\leq y] = F_x(y)^n = (\frac{y}{a})^n
+$$
+$$
+\expected[\hat{a}] = \int_0^a(1 - (\frac{y}{a})^n)\,dy = a - \frac{a}{n + 1} = \frac{n}{n + 1}a
+$$
+So $\hat{a}$ is an biassed estimator.
+\subsubsection{($\eta$)}
+$$
+\hat{\eta} = \frac{n}{n}\expected[x_i] = \expected[x_i]
+$$
+$$
+\expected[x_i] = \int_0^\infty\frac{1}{\eta}e^{\frac{-x}{\eta}}\,dx = \eta
+$$
+$$
+\rightarrow \expected[\hat{\eta}] = \eta
+$$
+$\hat{\eta}$ is an unbiassed estimator.
+
+\subsubsection{($\mu$)}
+$$
+\expected[\hat{\mu}] = \expected[x_i] = \mu
+$$
+$\hat{\mu}$ is unbiassed.
+
+\subsection{(c)}
+$$
+\expected[\hat{\sigma^2}] = \expected[\frac{1}{n}\sum_{i = 1}^n(x_i - \bar{x})] = \expected[\frac{1}{n}\sum_{i = 1}^nx_i^2 - \frac{2}{n}\sum_{i = 1}^n(x_i\bar{x}) + \frac{1}{n}\bar{x}^2]
+$$
+$$
+= \expected[\frac{1}{n}\sum_{i = 1}^nx_i^2 - \frac{1}{n^2}\sum_{i = 1}^n\sum_{j = 1}^nx_ix_j]
+$$
+$$
+= (\mu^2 + \sigma^2) -\mu^2 -  \frac{\sigma^2}{n}
+$$
+$$
+= \frac{n - 1}{n}\sigma^2
+$$
+$\sigma^2$ is a biassed estimator. 
+Then the following estimator will be unbiassed.
+$$
+\hat{\sigma}^2_2 = \frac{1}{n - 1}\sum_{i = 1}^n(x_i - \bar{x})^2
+$$
+\subsection{(d)}
+We know that:
+$$
+\text{MSE}(\hat{\theta}) = \var(\hat{\theta}) + \text{Bias}^2(\hat{\theta})
+$$
+for MLE estimator:
+$$
+\text{MSE}(\hat{\sigma^2}_{\text{MLE}}) = \var(\hat{\sigma^2}_{\text{MLE}})
+$$
+Now we need to calculate $\var(\sigma^2)$. Note that sum of squarred standard normal random variables has a Chi-squarred distribution with $n-1$ 
+degrees of freedom.
+$$
+\var(\frac{n - 1}{\sigma^2}\hat{\sigma}^2_2) = 2(n - 1)
+$$
+$$
+\rightarrow\var(\hat{\sigma}^2_2) = \frac{2\sigma^4}{n - 1}
+$$
+$$
+\var(\frac{n}{\sigma^2}\hat{\sigma}^2) = 2(n - 1)
+$$
+$$
+\rightarrow\var(\hat{\sigma}^2) = \frac{2(n - 1)\sigma^4}{n^2}
+$$
+$$
+\text{MSE}(\hat{\sigma}^2) - \text{MSE}(\hat{\sigma}^2_2) = \frac{2(n - 1)\sigma^4}{n^2} + \frac{\sigma^4}{n^2} - \frac{2\sigma^4}{n - 1}
+$$
+$$
+= -\frac{2(2n - 1)\sigma^4}{n^2(n - 1)} + \frac{\sigma^4}{n^2} = -\frac{(-3n +3)\sigma^4}{n^2(n - 1)} < 0
+$$
+So the original estimator has a lower MSE.

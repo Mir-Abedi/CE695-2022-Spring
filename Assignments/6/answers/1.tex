@@ -1,0 +1,69 @@
+\subsection{a}
+We can model the problem as an HMM. The hidden states are the state of weather and the observed states are if her mother has recieved any flower today. 
+Hidden state transition probabilites are given as:
+$$
+P_H = \begin{bmatrix}0.7&0.3\\0.3&0.7\end{bmatrix}
+$$
+The first row corresponds to the weather being good and the second row is weather being bad.
+
+\noindent Also for the observation probabilites:
+$$
+P_O = \begin{bmatrix}0.75&0.25\\0.5&0.5\end{bmatrix}
+$$
+The first is the weather being good and the First column is the probability of her mother getting an origami.
+\subsection{b}
+Now we can calculate the stationary probability for hidden states:
+$$
+\pi = P_H\pi \rightarrow (P_H - I)\pi = 0 \rightarrow \pi_H = \begin{bmatrix}0.5\\0.5\end{bmatrix}
+$$
+Then for any given day $\expected[O_i] = \expected[\expected[O_i|H_i]]$.
+$$
+\expected[\expected[O_i|H_i]] = 0.5\times0.75 + 0.5\times0.5 = 0.625
+$$
+On a course of 3650 days (10 years), the expected number of flowers can be obtained by:
+$$
+3650\times0.625
+$$
+\subsection{c}
+First condition on the next three days. We need to calculate the following probabilites.
+$$
+\prob[\text{Two origamis} | \text{3 good days}] + \prob[\text{Two origamis} | \text{2 good days and 1 bad day}] + \prob[\text{Two origamis} | \text{1 good day and 2 bad days}] + \prob[\text{Two origamis} | \text{3 bad days}] 
+$$
+$$
+= 0.75\times0.75\times0.25
+$$
+$$
++ 3\times(0.75\times0.75\times0.5 + 0.75\times0.25\times0.5 + 0.25\times0.75\times0.5)
+$$
+$$
++ 3\times(0.75\times0.5 + 0.25\times0.5\times0.5)
+$$
+$$
++ 0.5^3
+$$
+\subsection{d}
+$$
+\prob[GGG] = 0.7\times0.7\times0.75\times0.25\times0.25
+$$
+$$
+\prob[GGB] = 0.7\times0.3\times0.75\times0.25\times0.5
+$$
+$$
+\prob[GBG] = 0.3\times0.3\times0.75\times0.5\times0.25
+$$
+$$
+\prob[GBB] = 0.3\times0.7\times0.75\times0.5\times0.5
+$$
+$$
+\prob[BGG] = 0.3\times0.7\times0.5\times0.25\times0.25
+$$
+$$
+\prob[BGB] = 0.3\times0.3\times0.5\times0.25\times0.5
+$$
+$$
+\prob[BBG] = 0.7\times0.3\times0.5\times0.5\times0.25
+$$
+$$
+\prob[BBB] = 0.7\times0.7\times0.5\times0.5\times0.5
+$$
+So the most probable event is BBB.

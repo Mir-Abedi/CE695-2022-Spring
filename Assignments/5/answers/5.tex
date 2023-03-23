@@ -1,0 +1,32 @@
+For i.i.d $X_1,\dots,X_n$ The Cramer-Rao is achieved by $T(x)$ iff the derivative of log likelihood funciton can be 
+factorized as:
+$$
+a(\theta)[T(X) - g(\theta)] = \frac{\partial}{\partial\theta}\log\mathcal{L}
+$$
+
+\subsection{(a)}
+$$
+\mathcal{L} = \theta^n(\prod_iX_i)^{\theta - 1}
+$$
+$$
+\log\mathcal{L} = n\log(\theta) + (\theta - 1)\sum_{i = 1}^n\log(X_i)
+$$
+$$
+\frac{\partial}{\partial\theta}\log\mathcal{L} = \frac{n}{\theta} + \sum_{i = 1}^n\log(X_i)
+$$
+So $\sum_{i = 1}^n\log(X_i)$ is the UMVUE of $-\frac{n}{\theta}$ and reaches the bound.
+\subsection{(b)}
+The density function should be as:
+$$
+f(x|\theta) = \frac{\log(\theta)}{\theta - 1}\theta^x
+$$
+$$
+\mathcal{L} = (\frac{\log(\theta)}{\theta - 1})^n\theta^{\sum_{i = 1}^nX_i}
+$$
+$$
+\log\mathcal{L} = n\log(\frac{\log(\theta)}{\theta - 1}) + \sum_{i = 1}^nX_i\log(\theta)
+$$
+$$
+\frac{\partial}{\partial\theta}\log\mathcal{L} = \frac{n}{\theta\log(\theta)} - \frac{n}{\theta - 1} + \frac{\sum_{i = 1}^nX_i}{\theta}
+$$
+So $\sum_{i = 1}^nX_i$ is the UMVUE for $\frac{n\theta}{\theta - 1} - \frac{n}{\log(\theta)}$.

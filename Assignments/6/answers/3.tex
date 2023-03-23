@@ -1,0 +1,30 @@
+First starting from T:
+$$
+\prob[TTAC] = \prob[X_1 = T|X_0 = T]\times\prob[X_2 = T|X_1 = T]\times\prob[X_3 = A|X_2 = T]\times\prob[X_4 = C|X_3 = A]
+$$
+$$
+= 0.25\times0.25\times0.25\times0 = 0
+$$
+$$
+\prob[GGCGG] = \prob[X_1 = G|X_0 = T]\times\prob[X_2 = G|X_1 = G]\times\prob[X_3 = C|X_2 = G]\times\prob[X_4 = G|X_3 = C]\times\prob[X_5 = G|X_4 = G]
+$$
+$$
+= 0
+$$
+Starting randomly:
+$$
+P = 0.25\times\prob[\text{Starting from T}] + 0.25\times\prob[\text{Starting from A}] + 0.25\times\prob[\text{Starting from G}] + 0.25\times\prob[\text{Starting from C}]
+$$
+Note that $\prob[TTAC]$ is always zero because of $\prob[X_{i + 1} = C|X_i = A] = 0$.
+$$
+\prob[GGCGG] = 0.25\times0 
+$$
+$$
++ 0.25\times 0.125\times0.125\times0.5\times0.25\times0.125
+$$
+$$
++ 0.25\times 0.25\times0.125\times0.5\times0.25\times0.125
+$$
+$$
++ 0.25\times 0.5\times0.125\times0.5\times0.25\times0.125
+$$

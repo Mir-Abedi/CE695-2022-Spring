@@ -1,0 +1,53 @@
+$$
+\theta_{\text{MLE}} = \text{Argmax}_\theta f(x|\theta)
+$$
+\subsection{(a)}
+$$
+f(x|\theta) = \frac{1}{\theta^n} \quad\text{ given that } \forall_iX_i \leq \theta
+$$
+Note that for any $\theta < \text{Max}(x)\;:\;f(x|\theta) = 0$. And because $f(x|\theta)$ is strictly decreasing on $\mathbb{R}^+$ Then 
+$\forall \theta'\;:\;f(x|\theta = \text{Max}(x)) > f(x|\theta')$.
+
+\noindent Therefore for any $\theta$:
+$$
+f(x|\theta) < f(x|\text{Max}(x))
+$$
+So $\text{Max}(x)$ is the answer to our MLE estimation.
+
+\subsection{(b)}
+Note that just like the previous section $\forall \theta \leq \text{Max}(x)\;:\;f(x|\theta) = 0$. Furthermore we can show that 
+the MLE estimation doesn't exist.
+\subsubsection{Proof}
+By now we know that $f(x|\theta) = 0 | \theta\in[0, \text{Max}(x)]$. So the MLE estimation must be in the interval 
+$(\text{Max}(x), \infty)$. Suppose that $\theta_{\text{MLE}} \in (\text{Max}(x), \infty)$ is the MLE estimation. Define 
+$\theta_1$ as $\theta_1 = \frac{\text{Max}(x) + \theta_{MLE}}{2}$. We have:
+$$
+\theta_1\in(\text{Max}(x), \infty)\quad,\quad\theta_1 < \theta_{\text{MLE}}
+$$
+$$
+\rightarrow f(x|\theta_1) > f(x|\theta_{\text{MLE}})
+$$
+Therefore the MLE estimation doesn't exist.
+\subsection{(c)}
+First we need to find the likelihood function.
+$$
+\mathcal{L}(\theta | x) = f(x | \theta) = \begin{cases}1\quad\text{ if }\forall_iX_i\leq\theta + 1\quad\text{AND}\quad\forall_i\theta \leq X_i\\0\quad\text{O.W}\end{cases}
+$$
+Note that for any $\text{Max}(x) - 1\leq\theta\leq\text{Min}(x)$ the likelihood function of $\theta$ is equal to 1. So any 
+$\theta$ in the interval $[\text{Max}(x) - 1, \text{Min}(x)]$ can be a MLE estimator.
+\subsection{(d)}
+Note that $\mathcal{L}(\theta_1, \theta_2 | x) = 0$ if $\theta_1 > \text{Min}(x)$ or $\theta_2 < \text{Max}(x)$. So 
+$\theta_1 < \text{Min}(x)$ and $\theta_2 > \text{Max}(x)$.
+$$
+\mathcal{L}(\theta | x) = \frac{1}{\theta_2 - \theta_1}
+$$
+$$
+\frac{\partial\mathcal{L}}{\partial \theta_1} = \frac{1}{(\theta_1 - \theta_2)^2}
+$$
+$$
+\frac{\partial\mathcal{L}}{\partial \theta_2} = \frac{-1}{(\theta_2 - \theta_1)^2}
+$$
+Gradient of $\mathcal{L}$ can never be zero. So the optimal value for $\mathcal{L}$ must exist on boundary values of $\theta_1, \theta_2$.
+$$
+\theta_{1_{\text{MLE}}} = \text{Min}(x)\quad,\quad\theta_{2_{\text{MLE}}} = \text{Max}(x)   
+$$
